@@ -1,5 +1,6 @@
 import java.util.*;
 class tictac{
+    int f=0;
     int n=3;
     int value;
     int x;
@@ -53,10 +54,17 @@ do{
                     check(pos);
             }
 		display(pos);
-		check(pos);
+		f=check(pos);
+                if(f==1)
+                {
+                    break;
+                }
 a=a+1;
         }while(pos.contains(0));
-        //System.out.println("draw! game ends");
+        if(f==0)
+        {
+            System.out.println("draw! game ends");    
+        }
     }
 	int checkifplayersturn(){
 		if(a%2==0)
@@ -73,7 +81,7 @@ turn=1;
 return turn;
 	}
 	//}
-    public void check(ArrayList<Integer> pos)
+    public int check(ArrayList<Integer> pos)
     {
         int po=0;
         int count=0;
@@ -89,6 +97,7 @@ return turn;
                         if(count==3)
                         {
                             System.out.println("x wins");
+                            f=1;
                         }
                     }
                     else
@@ -98,6 +107,7 @@ return turn;
                         if(flag==3)
                         {
                             System.out.println("o wins");
+                            f=1;
                         }}
                     }
 	}po=po+1;
@@ -110,54 +120,89 @@ return turn;
         		{
             			for(int j=0;j>n;j++)
             			{
-					if(posi%2==0)
-					{
+                                    //posi=posi+1;
+					if(posi%2!=0){
+                                            if(posi>0)
+                                            {
 						if(pos.get(posi)==2)
 						{
 						cnt=cnt+1;
 							if(cnt==3)
 							{
 							System.out.println("x won");
+                                                        f=1;
 							}
 						}
+                                            }
 						else{
 							if(pos.get(posi)==4)
 							{
 								ct=ct+1;
 								if(ct==3)
 									{
-										System.out.println("o wins");}
+										System.out.println("o wins");
+                                                                        f=1;}
 								}
 						}
-					posi=posi+1;
 					}
 				}
 			}
 int posit=0;
-int countt=0;
-int cot=0;
 	for(int i=0;i<n;i++)
 	{
+            int countt=0;
+            int cot=0;
 		for(int j=0;j<n;j++){
 			if(pos.get(posit)==2){
 				countt=countt+1;
 					if(countt==3)
 					{
 					System.out.println("x wins");
+                                        f=1;
 					}
 				}
 				else
-				{if(pos.get(j)==4){
+				{if(pos.get(posit)==4){
 					cot=cot+1;
 					if(cot==3){
 						System.out.println("y wins");
-					}
+					f=1;}
 				}
 				
 			}posit=posit+1;
 		}
 	}
-
+        int cont=0;
+        int positi=0;
+        int ycont=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+            if(pos.get(positi)==2)
+            {
+                cont=cont+1;
+                if(cont==3)
+                {
+                    System.out.println("x wins");
+                    f=1;
+                }
+            }
+            else
+            {
+                if(pos.get(positi)==4)
+                {
+                    if(ycont==3)
+                    {
+                        System.out.println("y wins");
+                        f=1;
+                    }
+                }
+            }
+            positi=positi+1;
+        }
+    }
+        return f;
     }
 }
 public class xo{
@@ -166,7 +211,7 @@ public class xo{
      *
      * @param args
      */
-    public static void main(String []args){
+    public static void main(String [] args){
         //System.out.println("Hello World");
         //int arr[][]=new int[5][5];  
         int n=3;
