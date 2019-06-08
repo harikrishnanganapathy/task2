@@ -116,13 +116,11 @@ return turn;
 			int posi=0;
 			int cnt=0;
 			int ct=0;
-			for(int i=0;i<n;i++)
-        		{
-            			for(int j=0;j>n;j++)
+			for(int k=0;k<9;k++)
+        		{//posi=posi+2;
             			{
-                                    //posi=posi+1;
-					if(posi%2!=0){
-                                            if(posi>0)
+					if(posi%2==0){
+                                            if((posi!=0)&&(posi!=8))
                                             {
 						if(pos.get(posi)==2)
 						{
@@ -133,18 +131,21 @@ return turn;
                                                         f=1;
 							}
 						}
-                                            }
+                                            //}
 						else{
 							if(pos.get(posi)==4)
 							{
 								ct=ct+1;
 								if(ct==3)
 									{
-										System.out.println("o wins");
-                                                                        f=1;}
+										System.out.println("o won");
+                                                                        f=1;
+                                                                        }
 								}
 						}
 					}
+                                        }
+                                posi=posi+1;
 				}
 			}
 int posit=0;
@@ -157,7 +158,7 @@ int posit=0;
 				countt=countt+1;
 					if(countt==3)
 					{
-					System.out.println("x wins");
+					System.out.println("x win");
                                         f=1;
 					}
 				}
@@ -165,7 +166,7 @@ int posit=0;
 				{if(pos.get(posit)==4){
 					cot=cot+1;
 					if(cot==3){
-						System.out.println("y wins");
+						System.out.println("y win");
 					f=1;}
 				}
 				
@@ -175,16 +176,20 @@ int posit=0;
         int cont=0;
         int positi=0;
         int ycont=0;
+        int g=0;
+        int j;
         for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-            if(pos.get(positi)==2)
+        {positi=i;
+        g=i;
+            for(j=0;j<n;j++)
+            {//positi=positi+i;
+                if(posit==posit*i){
+                    if(pos.get(positi)==2)
             {
                 cont=cont+1;
                 if(cont==3)
                 {
-                    System.out.println("x wins");
+                    System.out.println("x wi");
                     f=1;
                 }
             }
@@ -192,16 +197,18 @@ int posit=0;
             {
                 if(pos.get(positi)==4)
                 {
+                    ycont=ycont+1;
                     if(ycont==3)
                     {
-                        System.out.println("y wins");
+                        System.out.println("y wi");
                         f=1;
                     }
                 }
             }
-            positi=positi+1;
+        positi=positi+3;
+            }//g=j;
         }
-    }
+        }
         return f;
     }
 }
